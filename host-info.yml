@@ -1,0 +1,7 @@
+version: 1.0
+name: Stirfire Studios SDL Host
+author: Stirfire Studios and Contributors
+platforms:
+  - windows
+  - macosx
+  
