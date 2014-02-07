@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "SledgeHost.h"
 #include <zl-vfs/ZLVfsFileSystem.h>
+#include <moai-core/host.h>
+#include <host-modules/aku_modules.h>
 
 #ifdef __APPLE__
 #include <moai-macosx/SFSAkuInit.h>
@@ -76,7 +78,8 @@ m_InputManager(NULL)
 
 	// Run core MOAI Lua.
 	//AKURunBytecode ( moai_lua, moai_lua_SIZE );
-	AKURunData (moai_lua, moai_lua_SIZE, AKU_DATA_STRING, AKU_DATA_ZIPPED);
+	//AKURunData (moai_lua, moai_lua_SIZE, AKU_DATA_STRING, AKU_DATA_ZIPPED);
+
 
 	// Register Sledge modules with MOAI.
 	REGISTER_LUA_CLASS ( SledgeCore );
@@ -203,14 +206,10 @@ void SledgeHost::RunGame()
 					break;
 				}
 			};
+		
+		AKUUpdate ();
+		AKUModulesUpdate ();
 
-			AKUUpdate();
-#if MOAI_HOST_USE_FMOD_EX
-			AKUFmodUpdate ();
-#endif
-#if MOAI_HOST_USE_FMOD_DESIGNER
-			AKUFmodDesignerUpdate (( float )fSimStep );
-#endif
 
 			if ( m_bDoLuaDynamicReeval ) {		
 #if defined(_WIN32) || defined (_WIN64)
@@ -249,63 +248,12 @@ void SledgeHost::DoSystemInit()
 		SDL_INIT_GAMECONTROLLER |
 		SDL_INIT_HAPTIC
 	);
+	AKUAppInitialize ();
+	AKUModulesAppInitialize ();
 
-	// refresh the AKU context
-	m_AkuContext = AKUGetContext();
-	if(m_AkuContext) {
-		AKUDeleteContext(m_AkuContext);
-	}
-	m_AkuContext = AKUCreateContext();
-
-	AKUInitializeUtil();
-	AKUInitializeSim();
-
-#if MOAI_WITH_BOX2D
-	AKUInitializeBox2D ();
-#endif
-
-#if MOAI_WITH_CHIPMUNK
-	AKUInitializeChipmunk ();
-#endif
-
-#if MOAI_WITH_FMOD_EX
-	AKUFmodLoad ();
-#endif
-
-#if MOAI_WITH_FMOD_DESIGNER
-	AKUFmodDesignerInit ();
-#endif
-
-	// initialise AKU modules
-	// @todo add more AKU things here
-	#ifdef MOAI_WITH_LUAEXT
-	AKUExtLoadLuacrypto ();
-	AKUExtLoadLuacurl ();
-	AKUExtLoadLuafilesystem ();
-	AKUExtLoadLuasocket ();
-	AKUExtLoadLuasql ();
-#endif
-
-#if MOAI_WITH_HARNESS
-	AKUSetFunc_ErrorTraceback ( _debuggerTracebackFunc );
-	AKUDebugHarnessInit ();
-#endif
-
-#if MOAI_WITH_HTTP_CLIENT
-	AKUInitializeHttpClient ();
-#endif 
-
-#if MOAI_WITH_PARTICLE_PRESETS
-	ParticlePresets ();
-#endif
-
-#if MOAI_WITH_UNTZ
-	AKUInitializeUntz ();
-#endif
-
-	//#ifdef SLEDGE_HOST_USE_AUDIOSAMPLER
-	//AKUAudioSamplerInit();
-	//#endif
+	AKUCreateContext ();
+	AKUModulesContextInitialize ();
+	AKUModulesRunLuaAPIWrapper ();
 
 	// set AKU input configuration and reserve AKU input devices 
 	m_InputManager->doAKUInit();
@@ -331,21 +279,9 @@ void SledgeHost::DoSystemInit()
  */
 void SledgeHost::DoSystemTeardown(void)
 {
-#if MOAI_WITH_BOX2D
-	AKUFinalizeBox2D ();
-#endif
-
-#if MOAI_WITH_CHIPMUNK
-	AKUFinalizeChipmunk ();
-#endif
-
-#if MOAI_WITH_HTTP_CLIENT
-	AKUFinalizeHttpClient ();
-#endif
-
-	AKUFinalizeUtil();
-	AKUFinalizeSim();
-	AKUFinalize();
+	AKUModulesAppFinalize ();
+	AKUAppFinalize ();
+	
 
 	if(m_SDLGLContext != NULL)
 		SDL_GL_DeleteContext(m_SDLGLContext);
