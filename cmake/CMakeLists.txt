@@ -4,7 +4,7 @@ project ( sledge )
 
 set ( BUILD_HOST false )
 
-add_subdirectory( "${LIBMOAI_DIR}" "${CMAKE_CURRENT_BINARY_DIR}/libmoai" )
+add_subdirectory( ${LIBMOAI_DIR} ${CMAKE_CURRENT_BINARY_DIR}/libmoaistatic )
 
 set (HOST_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/..")
 
@@ -68,9 +68,9 @@ add_executable(sledge ${SLEDGE_SRC})
 target_link_libraries ( sledge 
   moai-husky
   host-modules
-  moai-sim
-  moai-util
   moai-core
+  moai-util
+  moai-sim
   SDL2-static
   zlcore
 )
