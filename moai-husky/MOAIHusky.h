@@ -59,11 +59,11 @@ private:
 	void HuskyObserverCloudDataDownloaded(const char *cloudfilename, void* buffer, int32_t bytes);
 	void HuskyObserverCloudDataUploaded(const char *path, bool success);
 	
-	MOAILuaLocal _achievementCallback;
-	MOAILuaLocal _leaderboardScoreSetCallback;
-	MOAILuaLocal _leaderboardScoreGetCallback;
-	MOAILuaLocal _cloudDataUploadCallback;
-	MOAILuaLocal _cloudDataDownloadCallback;
+	MOAILuaMemberRef _achievementCallback;
+	MOAILuaMemberRef _leaderboardScoreSetCallback;
+	MOAILuaMemberRef _leaderboardScoreGetCallback;
+	MOAILuaMemberRef _cloudDataUploadCallback;
+	MOAILuaMemberRef _cloudDataDownloadCallback;
 
 	LoaderHandleMap *_map;
 	HuskyDLLHandle _currentHuskyHandle;
