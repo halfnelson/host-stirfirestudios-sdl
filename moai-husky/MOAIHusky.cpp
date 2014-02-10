@@ -326,7 +326,7 @@ int MOAIHusky::_leaderboardSetGetScoresCallback( lua_State* L ) {
 	if (self->_instance == NULL)
 		return 0;
 	
-	self->_leaderboardScoreGetCallback.SetRef(*self, state,2)
+	self->_leaderboardScoreGetCallback.SetRef(*self, state,2);
 	
 	return 0;
 }
@@ -487,7 +487,7 @@ void MOAIHusky::HuskyObserverLeaderboardScoreGetCallback(const char *name, Husky
 void MOAIHusky::HuskyObserverCloudDataDownloaded(const char *cloudfilename, void* buffer, int32_t bytes) {
 	MOAIScopedLuaState state = MOAILuaRuntime::Get().State ();
 
-	if (!this->_cloudDataDownloadCallback.Pushref(state)) 	return;
+	if (!this->_cloudDataDownloadCallback.PushRef(state)) 	return;
 	MOAIDataBuffer *moaibuffer = new MOAIDataBuffer();
 	moaibuffer->Load(buffer, bytes);
 	state.Push(cloudfilename);
