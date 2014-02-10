@@ -5,11 +5,15 @@
 #include <shlobj.h>
 #endif
 
-const char* const SledgeCore::SFSMOAIEnvKeys[Sledge::SFS_ENV_MOAIMAX+Sledge::SFS_ENV_ADDITIONAL_KEY_COUNT] = {
+#ifdef __MINGW32__
+#include <stdlib.h>
+#endif
+
+const char* const SledgeCore::SFSMOAIEnvKeys[Sledge::SFS_ENV_MOAIMAX+Sledge::SFS_ENV_ADDITIONAL_KEY_COUNT-7] = {
 	MOAI_ENV_appDisplayName,
 	MOAI_ENV_appID,
 	MOAI_ENV_appVersion,
-	MOAI_ENV_buildNumber,
+//	MOAI_ENV_buildNumber,
 	MOAI_ENV_cacheDirectory,
 	MOAI_ENV_carrierISOCountryCode,
 	MOAI_ENV_carrierMobileCountryCode,
@@ -20,7 +24,7 @@ const char* const SledgeCore::SFSMOAIEnvKeys[Sledge::SFS_ENV_MOAIMAX+Sledge::SFS
 	MOAI_ENV_cpuabi,
 	MOAI_ENV_devBrand,
 	MOAI_ENV_devName,
-	MOAI_ENV_devUserName,
+//	MOAI_ENV_devUserName,
 	MOAI_ENV_devManufacturer,
 	MOAI_ENV_devModel,
 	MOAI_ENV_devPlatform,
@@ -37,17 +41,17 @@ const char* const SledgeCore::SFSMOAIEnvKeys[Sledge::SFS_ENV_MOAIMAX+Sledge::SFS
 	MOAI_ENV_horizontalResolution,
 	MOAI_ENV_udid,
 	MOAI_ENV_openUdid,
-	MOAI_ENV_screenCount,
-	MOAI_ENV_ramAmount,
-	MOAI_ENV_processorModel,
-	MOAI_ENV_processorFreq,
-	MOAI_ENV_desktopRes
+//	MOAI_ENV_screenCount,
+//	MOAI_ENV_ramAmount,
+//	MOAI_ENV_processorModel,
+//	MOAI_ENV_processorFreq,
+//	MOAI_ENV_desktopRes
 };
 
 SledgeCore::SledgeCore(){
-	RTTI_BEGIN
-		RTTI_EXTEND(MOAILuaObject)
-	RTTI_END
+	//RTTI_BEGIN
+//		RTTI_EXTEND(MOAILuaObject)
+	//RTTI_END
 }
 
 SledgeCore::~SledgeCore()
@@ -369,17 +373,21 @@ void SledgeCore::GetAdditionalHWInfo( MOAIEnvironment* p_env )
 		const size_t newsize = 513;
 		size_t convertedChars = 0;
 		char nstring[newsize];
-		wcstombs_s(&convertedChars, nstring, origsize, szBuffer, _TRUNCATE);
+		#ifdef __MINGW32__
+		   wcstombs(nstring, szBuffer, newsize);
+		#else
+			wcstombs_s(&convertedChars, nstring, origsize, szBuffer, _TRUNCATE);
+		#endif
 		p_env->SetValue ( SFSMOAIEnvKeys[Sledge::SFS_ENV_processorModel], nstring );
 
 		procModel = nstring;
 		// use function since we don't need the string for UUID generation
-		w32_updateEnvFromRegKeyDword(
-			p_env,
-			SFSMOAIEnvKeys[Sledge::SFS_ENV_processorFreq],
-			hKey,
-			L"~Mhz"
-			);
+	//	w32_updateEnvFromRegKeyDword(
+//			p_env,//
+			//SFSMOAIEnvKeys[Sledge::SFS_ENV_processorFreq],
+			//hKey,
+			//L"~Mhz"
+			//);
 	}
 	RegCloseKey(hKey);
 
@@ -408,7 +416,11 @@ void SledgeCore::GetAdditionalHWInfo( MOAIEnvironment* p_env )
 		const size_t newsize = 513;
 		size_t convertedChars = 0;
 		char nstring[newsize];
-		wcstombs_s(&convertedChars, nstring, origsize, szBuffer, _TRUNCATE);
+		#ifdef __MINGW32__
+		   wcstombs(nstring, szBuffer, newsize);
+		#else
+		   wcstombs_s(&convertedChars, nstring, origsize, szBuffer, _TRUNCATE);
+		#endif
 		p_env->SetValue ( SFSMOAIEnvKeys[Sledge::SFS_ENV_devUserName], nstring );
 
 		compName = nstring;

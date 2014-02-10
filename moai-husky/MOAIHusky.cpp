@@ -5,10 +5,11 @@
 //  Created by Brendan Ragan on 20/12/13.
 //
 //
-
+#include "pch.h"
 #include "MOAIHusky.h"
 #include <iterator>
-
+#include <moai-core/MOAILuaState-impl.h>
+#include <moai-core/MOAILuaClass-impl.h>
 #ifdef __APPLE__
 	#include <dirent.h>
 	#import <Foundation/Foundation.h>
@@ -37,9 +38,8 @@ bool endsWith(const char *string, const char *ending) {
 #endif
 
 MOAIHusky::MOAIHusky() {
-	RTTI_BEGIN
-	RTTI_EXTEND(MOAILuaObject)
-	RTTI_END
+	
+	//RTTI_SINGLE ( MOAILuaObject );
 
 	_map = new LoaderHandleMap();
 	_currentHuskyHandle = NULL;

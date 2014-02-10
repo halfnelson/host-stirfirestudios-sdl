@@ -96,87 +96,15 @@ namespace {
 #include <moai-core/MOAIEventSource.h>
 #include <moai-sim/MOAIEnvironment.h>
 
-#if MOAI_WITH_BOX2D
-#include <moai-box2d/host.h>
-#endif
-
-#if MOAI_WITH_CHIPMUNK
-#include <moai-chipmunk/host.h>
-#endif
-
-#if MOAI_WITH_FMOD_DESIGNER
-#include <moai-fmod-designer/host.h>
-#endif
-
-#if MOAI_WITH_FMOD_EX
-#include <moai-fmod-ex/host.h>
-#endif
-
-#if MOAI_WITH_HARNESS
-#include <moai-harness/host.h>
-#endif
-
-#if MOAI_WITH_HTTP_CLIENT
-#include <moai-http-client/host.h>
-#endif
-
-#if MOAI_WITH_LUAEXT
-#include <moai-luaext/host.h>
-#endif
-
-#if MOAI_WITH_PARTICLE_PRESETS
-#include <ParticlePresets.h>
-#endif
-
-#if MOAI_WITH_UNTZ
-#include <moai-untz/host.h>
-#endif
-
 #include <moai-husky/MOAIHusky.h>
 
-#ifdef _WIN32
-
-#include <glut.h> // wtf
 
 
-#if MOAI_WITH_FOLDER_WATCHER
-#include <FolderWatcher-win.h>
-#endif
-#else
-#ifdef MOAI_OS_LINUX
-#include <GL/glut.h>
-#else
-#include <GLUT/glut.h>
-#endif
-#endif
-
-#ifdef __APPLE__
-
-#include <OpenGL/OpenGL.h>
-
-#if MOAI_WITH_FOLDER_WATCHER
-#include <FolderWatcher-mac.h>
-#endif
-#endif
 
 
-#if defined(_WIN32) || defined(_WIN64)
+
+#if FALSE && (defined(_WIN32) || defined(_WIN64))
 #include <kashmir/uuid.h>
-#endif
-/*#include <uslscore/pch.h>
-#include <uslscore/USAccessors.h>
-#include <uslscore/USBox.h>
-#include <uslscore/USColor.h>
-#include <uslscore/USFileSys.h>
-#include <uslscore/USLeanArray.h>
-#include <uslscore/USStream.h>
-#include <uslscore/USStreamReader.h>
-#include <uslscore/USStreamWriter.h>
-#include <uslscore/STLList.h>
-#include <uslscore/STLSet.h>
-#include <uslscore/STLMap.h>*/
-#ifdef SLEDGE_HOST_USE_AUDIOSAMPLER
-#include <aku/AKU-audiosampler.h>
 #endif
 
 

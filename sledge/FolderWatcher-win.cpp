@@ -210,7 +210,7 @@ static void listProjectDirectory() {
 
 void setStartupDir(const char * startupScript ) {
 	size_t dirPathSize = findLastOccuranceOfDirectorySeparator(startupScript);
-	char * temp = (char *) calloc(max(dirPathSize+2,3),sizeof(char));
+	char * temp = (char *) calloc(max((int) dirPathSize+2,3),sizeof(char));
 	if ( dirPathSize ) {
 		strncpy(temp,startupScript,dirPathSize+1);
 		temp[dirPathSize+1] = '\0';

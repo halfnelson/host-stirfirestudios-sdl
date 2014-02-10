@@ -20,7 +20,7 @@ set (HUSKY_INCLUDES
 
 add_library(husky STATIC ${HUSKY_SRC})
 target_include_directories(husky PUBLIC ${HUSKY_INCLUDES})
-
+target_link_libraries(husky moai-core moai-util moai-sim zlcore)
 
 
 set (MOAI_HUSKY_SRC
@@ -33,7 +33,7 @@ set (MOAI_HUSKY_INCLUDES
 
 add_library(moai-husky STATIC ${MOAI_HUSKY_SRC})
 target_include_directories(moai-husky PUBLIC ${MOAI_HUSKY_INCLUDES})
-target_link_libraries(moai-husky husky moai-core moai-util)
+target_link_libraries(moai-husky moai-core moai-util moai-sim zlcore husky)
 
 set (SLEDGE_SRC
 	${HOST_ROOT}/sledge/SledgeCore.cpp
@@ -59,6 +59,7 @@ endif (BUILD_WINDOWS)
 set (SLEDGE_INCLUDES
 	"${SDK_ROOT}/src"
 	"${SDK_ROOT}/src/moai-config"
+  "${SDK_ROOT}/3rdparty/sdl2-2.0.0/include"
   "${HOST_ROOT}/"
 )
 
@@ -70,6 +71,7 @@ target_link_libraries ( sledge
   moai-sim
   moai-util
   moai-core
+  SDL2-static
   zlcore
 )
 

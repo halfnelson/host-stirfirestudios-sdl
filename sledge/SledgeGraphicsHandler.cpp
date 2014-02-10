@@ -8,9 +8,9 @@
 SDL_Window* SledgeGraphicsHandler::m_window = NULL;
 
 SledgeGraphicsHandler::SledgeGraphicsHandler(){
-	RTTI_BEGIN
-		RTTI_EXTEND(MOAILuaObject)
-	RTTI_END
+//	RTTI_BEGIN
+//		RTTI_EXTEND(MOAILuaObject)
+//	RTTI_END
 }
 
 SledgeGraphicsHandler::~SledgeGraphicsHandler()
