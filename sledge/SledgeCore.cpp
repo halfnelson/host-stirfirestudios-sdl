@@ -49,9 +49,9 @@ const char* const SledgeCore::SFSMOAIEnvKeys[Sledge::SFS_ENV_MOAIMAX+Sledge::SFS
 };
 
 SledgeCore::SledgeCore(){
-	//RTTI_BEGIN
-//		RTTI_EXTEND(MOAILuaObject)
-	//RTTI_END
+	RTTI_BEGIN
+		RTTI_EXTEND(MOAILuaObject)
+	RTTI_END
 }
 
 SledgeCore::~SledgeCore()

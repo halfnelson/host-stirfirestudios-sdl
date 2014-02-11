@@ -39,7 +39,7 @@ bool endsWith(const char *string, const char *ending) {
 
 MOAIHusky::MOAIHusky() {
 	
-	//RTTI_SINGLE ( MOAILuaObject );
+	RTTI_SINGLE ( MOAILuaObject );
 
 	_map = new LoaderHandleMap();
 	_currentHuskyHandle = NULL;

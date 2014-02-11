@@ -331,7 +331,7 @@ const char* const SFSMOAIXMLElementNames[Sledge::SFS_ENV_MOAIMAX] = {
 namespace SLEDGE_NAMESPACE
 {
 	const u32 DefaultScriptLocationCount = 5;
-	char* const DefaultScriptLocations[] =
+	const char* const DefaultScriptLocations[] =
 	{
 		"test/main.lua",
 		"main.lua",
@@ -346,7 +346,7 @@ namespace SLEDGE_NAMESPACE
 	const u32 THRESHOLD_TRIGGER = 3855;
 	const u32 MAX_AXIS = 32767;
 
-	char* const INPUTCONFIGNAME = "AKUSDL2";
+	const char INPUTCONFIGNAME[] = "AKUSDL2";
 }
 #pragma endregion
 
@@ -408,7 +408,7 @@ struct NormalizedJoystick
 struct SledgeDevice
 {
 	SLEDGE_NAMESPACE::InputDevice_ID device_id;
-	char*				name;
+	const char*				name;
 };
 
 struct SledgeController
@@ -418,7 +418,7 @@ struct SledgeController
 	SDL_GameController* controller;
 	int					index;
 	int					index_controller;
-	char*				name;
+	const char*				name;
 
 	bool				connected;
 
@@ -435,7 +435,7 @@ struct SledgeJoystick
 	SDL_Joystick*		joystick;
 	int					index;
 	int					index_joystick;
-	char*				name;
+	const char*				name;
 
 	bool				connected;
 

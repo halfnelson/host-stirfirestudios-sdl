@@ -31,9 +31,9 @@ private:
 	SDL_Window*		m_SDLWindow;
 	SDL_GLContext	m_SDLGLContext;
 
-	SledgeInputManager* m_InputManager;
+	SledgeInputManager* m_InputManager;	
 
-	char*			m_LastScript;
+	const char*			m_LastScript;
 	bool			m_bDoLuaDynamicReeval;
 
 	s32				m_StatusCode;

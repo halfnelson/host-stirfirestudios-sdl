@@ -88,12 +88,12 @@ SledgeInputWrapper::SledgeInputWrapper () {
 	
 	// register all classes SledgeInputHandler derives from
 	// we need this for custom RTTI implementation
-//	RTTI_BEGIN
-//		RTTI_EXTEND ( MOAILuaObject )
+	RTTI_BEGIN
+		RTTI_EXTEND ( MOAILuaObject )
 	//	
 		// and any other objects from multiple inheritance...
 		// RTTI_EXTEND ( SledgeInputHandlerBase )
-//	RTTI_END
+	RTTI_END
 }
 
 //----------------------------------------------------------------//
