@@ -8,6 +8,12 @@ add_subdirectory( ${LIBMOAI_DIR} ${CMAKE_CURRENT_BINARY_DIR}/libmoaistatic )
 
 set (HOST_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/..")
 
+if (BUILD_WINDOWS)
+  if (NOT MSVC)
+    set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -m32")
+    set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -m32")
+  endif (NOT MSVC)
+endif (BUILD_WINDOWS)
 
 set (HUSKY_SRC
     ${HOST_ROOT}/Husky/shared/HuskyLoader.cpp
@@ -33,7 +39,7 @@ set (MOAI_HUSKY_INCLUDES
 
 add_library(moai-husky STATIC ${MOAI_HUSKY_SRC})
 target_include_directories(moai-husky PUBLIC ${MOAI_HUSKY_INCLUDES})
-target_link_libraries(moai-husky moai-core moai-util moai-sim zlcore husky)
+target_link_libraries(moai-husky moai-core moai-util moai-sim zlcore husky )
 
 set (SLEDGE_SRC
 	${HOST_ROOT}/sledge/SledgeCore.cpp
@@ -78,5 +84,6 @@ target_link_libraries ( sledge
 if ( BUILD_WINDOWS )
   target_link_libraries ( sledge
     winmm
+    Shlwapi
   )
 endif (BUILD_WINDOWS)

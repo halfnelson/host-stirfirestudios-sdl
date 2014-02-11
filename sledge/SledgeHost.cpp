@@ -79,7 +79,7 @@ m_InputManager(NULL)
 	// Run core MOAI Lua.
 	//AKURunBytecode ( moai_lua, moai_lua_SIZE );
 	//AKURunData (moai_lua, moai_lua_SIZE, AKU_DATA_STRING, AKU_DATA_ZIPPED);
-
+ 	AKUModulesRunLuaAPIWrapper ();
 
 	// Register Sledge modules with MOAI.
 	REGISTER_LUA_CLASS ( SledgeCore );
@@ -90,6 +90,7 @@ m_InputManager(NULL)
 	
 	// Register husky
 	REGISTER_LUA_CLASS ( MOAIHusky );
+	
 	
 	// Finally, run the designated script.
 	AKUSetArgv ( argv );
@@ -253,10 +254,11 @@ void SledgeHost::DoSystemInit()
 
 	AKUCreateContext ();
 	AKUModulesContextInitialize ();
-	AKUModulesRunLuaAPIWrapper ();
+	
 
 	// set AKU input configuration and reserve AKU input devices 
 	m_InputManager->doAKUInit();
+  
 
 	// get hardware environment keys into MOAI
 #if defined(_WIN32) || defined(_WIN64)
@@ -323,7 +325,6 @@ void SledgeHost::DoOpenWindow (const char* title, s32 w, s32 h)
 
 	m_WindowSize.x = w;
 	m_WindowSize.y = h;
-	
 	// Set up a window if we don't have one yet.
 	if(m_SDLWindow == NULL)
 	{
@@ -345,7 +346,6 @@ void SledgeHost::DoOpenWindow (const char* title, s32 w, s32 h)
 			SDL_Quit();
 			return;
 		}
-		
 		SDL_SetWindowTitle(m_SDLWindow, title);
 
 		// create the gl context
@@ -369,13 +369,12 @@ void SledgeHost::DoOpenWindow (const char* title, s32 w, s32 h)
 			printf("VSync not enableable!\n");
 		}
 	}
-
 	SledgeGraphicsHandler::SetWindowHandle(m_SDLWindow);
 
 
 	// Get additional environment info.
 #if defined(_WIN32) || defined(_WIN64)
-	SledgeCore::GetAdditionalHWInfo( &(MOAIEnvironment::Get()) );
+	//SledgeCore::GetAdditionalHWInfo( &(MOAIEnvironment::Get()) );
 #endif
 }
 
