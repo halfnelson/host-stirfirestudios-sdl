@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Dummy DLL", "dummy\dll.vcxproj", "{BB64EF95-C4E7-4BA9-9A24-1212741B7B8B}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tester", "dummy\tester.vcxproj", "{8C13135C-0D0A-4B17-8490-EE80CD2F5EA4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BB64EF95-C4E7-4BA9-9A24-1212741B7B8B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{BB64EF95-C4E7-4BA9-9A24-1212741B7B8B}.Debug|Win32.Build.0 = Debug|Win32
+		{BB64EF95-C4E7-4BA9-9A24-1212741B7B8B}.Release|Win32.ActiveCfg = Release|Win32
+		{BB64EF95-C4E7-4BA9-9A24-1212741B7B8B}.Release|Win32.Build.0 = Release|Win32
+		{8C13135C-0D0A-4B17-8490-EE80CD2F5EA4}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8C13135C-0D0A-4B17-8490-EE80CD2F5EA4}.Debug|Win32.Build.0 = Debug|Win32
+		{8C13135C-0D0A-4B17-8490-EE80CD2F5EA4}.Release|Win32.ActiveCfg = Release|Win32
+		{8C13135C-0D0A-4B17-8490-EE80CD2F5EA4}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

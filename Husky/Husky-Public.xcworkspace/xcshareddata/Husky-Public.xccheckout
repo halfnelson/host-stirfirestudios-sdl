@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>CAB0DA11-5E14-48E1-9363-4450948DC7BF</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Husky-Public</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>C0A105C6-6D4F-4FBB-B1FC-1035789ADAA9</key>
+		<string>https://github.com/StirfireStudios/Husky</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Husky-Public.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>C0A105C6-6D4F-4FBB-B1FC-1035789ADAA9</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/StirfireStudios/Husky</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>C0A105C6-6D4F-4FBB-B1FC-1035789ADAA9</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>C0A105C6-6D4F-4FBB-B1FC-1035789ADAA9</string>
+			<key>IDESourceControlWCCName</key>
+			<string>public</string>
+		</dict>
+	</array>
+</dict>
+</plist>
