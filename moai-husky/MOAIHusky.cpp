@@ -14,7 +14,9 @@
 	#include <dirent.h>
 	#import <Foundation/Foundation.h>
 #elif WIN32
-	#define strcasecmp(a, b) lstrcmpiA(a,b)
+	#ifndef __MINGW32__
+    	#define strcasecmp(a, b) lstrcmpiA(a,b)
+	#endif
 	#include <Shlwapi.h>
 	#pragma comment(lib, "Shlwapi.lib")
 #endif

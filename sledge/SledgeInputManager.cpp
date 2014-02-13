@@ -185,7 +185,7 @@ bool SledgeInputManager::connectController(int idx_device, int idx_gamepad)
 		{
 			pad.buttons.push_back(false);
 		}
-		char* controllerName =
+		const char* controllerName =
 			const_cast<char*>(SDL_GameControllerNameForIndex(idx_device));
 		if (!controllerName) controllerName = "Unknown controller";
 		pad.name = controllerName;
@@ -249,7 +249,7 @@ bool SledgeInputManager::connectJoystick(int idx_device, int idx_joystick)
 	// at this point we should be able to create a new m_joysticks entry
 	stick.joystick = SDL_JoystickOpen(idx_device);
 	stick.connected = SDL_JoystickGetAttached(stick.joystick) == SDL_TRUE;
-	char* joystickName = 
+	const char* joystickName = 
 		const_cast<char*>(SDL_JoystickName(stick.joystick));
 	if (!joystickName) joystickName = "Unknown joystick";
 	stick.name = joystickName;
