@@ -19,9 +19,9 @@ module BuildFile
 
   def cmake_output
     if build_config.host.type == 'windows'
-      File.join(File.join(build_config.build_dir,'bin','sledge.exe'))
+      File.join(File.join(build_config.build_dir,'bin','host-custom','sledge.exe'))
     else
-      File.join(File.join(build_config.build_dir,'bin','sledge'))
+      File.join(File.join(build_config.build_dir,'bin','host-custom','sledge'))
     end
   end
 

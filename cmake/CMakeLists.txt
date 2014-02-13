@@ -1,19 +1,7 @@
 cmake_minimum_required ( VERSION 2.8.8 )
 project ( sledge )
 
-
-set ( BUILD_HOST false )
-
-add_subdirectory( ${LIBMOAI_DIR} ${CMAKE_CURRENT_BINARY_DIR}/libmoaistatic )
-
 set (HOST_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/..")
-
-if (BUILD_WINDOWS)
-  if (NOT MSVC)
-    set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -m32")
-    set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -m32")
-  endif (NOT MSVC)
-endif (BUILD_WINDOWS)
 
 set (HUSKY_SRC
     ${HOST_ROOT}/Husky/shared/HuskyLoader.cpp
@@ -63,9 +51,9 @@ if (BUILD_WINDOWS)
 endif (BUILD_WINDOWS)
 
 set (SLEDGE_INCLUDES
-	"${SDK_ROOT}/src"
-	"${SDK_ROOT}/src/moai-config"
-  "${SDK_ROOT}/3rdparty/sdl2-2.0.0/include"
+	"${MOAI_ROOT}/src"
+	"${MOAI_ROOT}/src/moai-config"
+  "${MOAI_ROOT}/3rdparty/sdl2-2.0.0/include"
   "${HOST_ROOT}/"
 )
 
