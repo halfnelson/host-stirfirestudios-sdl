@@ -13,7 +13,7 @@ module BuildFile
 
   def build
 	  status "Build", "building host to #{project.relative_path(build_config.build_dir)}"
-    build_moai('sledge',build_config.modules,cmake_output)
+    build_moai('sledge',cmake_output)
     distribute
   end
 
